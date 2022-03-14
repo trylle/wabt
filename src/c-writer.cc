@@ -1948,18 +1948,29 @@ void CWriter::Write(const ExprList& exprs) {
         break;
       }
 
-      case ExprType::MemoryCopy:
-        UNIMPLEMENTED("ExprType::MemoryCopy");
-        break;
+      case ExprType::MemoryCopy: {
+        Memory* srcMemory = module_->memories[module_->GetMemoryIndex(
+            cast<MemoryCopyExpr>(&expr)->srcmemidx)];
+        Memory* destMemory = module_->memories[module_->GetMemoryIndex(
+            cast<MemoryCopyExpr>(&expr)->destmemidx)];
+
+        Write(StackVar(0), " = wasm_rt_copy_memory(",
+              ExternalPtr(srcMemory->name), ", ", ExternalPtr(destMemory->name),
+              ");", Newline());
+      } break;
       case ExprType::DataDrop:
         UNIMPLEMENTED("ExprType::DataDrop");
         break;
       case ExprType::MemoryInit:
         UNIMPLEMENTED("ExprType::MemoryInit");
         break;
-      case ExprType::MemoryFill:
-        UNIMPLEMENTED("ExprType::MemoryFill");
-        break;
+      case ExprType::MemoryFill: {
+        Memory* memory = module_->memories[module_->GetMemoryIndex(
+            cast<MemoryFillExpr>(&expr)->memidx)];
+
+        Write(StackVar(0), " = wasm_rt_fill_memory(", ExternalPtr(memory->name),
+              ", ", StackVar(0), ");", Newline());
+      } break;
       case ExprType::TableCopy:
         UNIMPLEMENTED("ExprType::TableCopy");
         break;
