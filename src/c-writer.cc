@@ -1949,21 +1949,49 @@ void CWriter::Write(const ExprList& exprs) {
       }
 
       case ExprType::MemoryCopy:
+        UNIMPLEMENTED("ExprType::MemoryCopy");
+        break;
       case ExprType::DataDrop:
+        UNIMPLEMENTED("ExprType::DataDrop");
+        break;
       case ExprType::MemoryInit:
+        UNIMPLEMENTED("ExprType::MemoryInit");
+        break;
       case ExprType::MemoryFill:
+        UNIMPLEMENTED("ExprType::MemoryFill");
+        break;
       case ExprType::TableCopy:
+        UNIMPLEMENTED("ExprType::TableCopy");
+        break;
       case ExprType::ElemDrop:
+        UNIMPLEMENTED("ExprType::ElemDrop");
+        break;
       case ExprType::TableInit:
+        UNIMPLEMENTED("ExprType::TableInit");
+        break;
       case ExprType::TableGet:
+        UNIMPLEMENTED("ExprType::TableGet");
+        break;
       case ExprType::TableSet:
+        UNIMPLEMENTED("ExprType::TableSet");
+        break;
       case ExprType::TableGrow:
+        UNIMPLEMENTED("ExprType::TableGrow");
+        break;
       case ExprType::TableSize:
+        UNIMPLEMENTED("ExprType::TableSize");
+        break;
       case ExprType::TableFill:
+        UNIMPLEMENTED("ExprType::TableFill");
+        break;
       case ExprType::RefFunc:
+        UNIMPLEMENTED("ExprType::RefFunc");
+        break;
       case ExprType::RefNull:
+        UNIMPLEMENTED("ExprType::RefNull");
+        break;
       case ExprType::RefIsNull:
-        UNIMPLEMENTED("...");
+        UNIMPLEMENTED("ExprType::RefIsNull");
         break;
 
       case ExprType::MemoryGrow: {
